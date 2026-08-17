@@ -1,0 +1,19 @@
+{
+  "version": "0.1.0",
+  "description": "A collection of agent skills maintained by zcf0508.",
+  "license": "MIT",
+  "keywords": [
+    "agent-skills",
+    "skills"
+  ],
+  "files": [
+    "skills"
+  ],
+  "scripts": {
+    "release": "bumpp"
+  },
+  "devDependencies": {
+    "bumpp": "^10.2.3"
+  }
+}
+
