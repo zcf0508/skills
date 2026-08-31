@@ -35,7 +35,7 @@ description: 管理项目 postmortem（验尸报告）。两种场景：1）修�
 
 ### A2：确定编号和严重级别
 
-读取 [postmortem/INDEX.md](../../../postmortem/INDEX.md) 获取当前最大编号，新编号 = 最大编号 + 1。
+读取 [postmortem/README.md](../../../postmortem/README.md) 获取当前最大编号，新编号 = 最大编号 + 1。
 
 严重级别定义：
 - **P0-紧急**：线上服务不可用，影响所有用户
@@ -87,7 +87,7 @@ description: 管理项目 postmortem（验尸报告）。两种场景：1）修�
 
 ### A4：更新索引
 
-在 `postmortem/INDEX.md` 的表格末尾追加一行，格式与现有行一致。
+在 `postmortem/README.md` 的表格末尾追加一行，格式与现有行一致。
 
 ---
 
@@ -109,7 +109,7 @@ description: 管理项目 postmortem（验尸报告）。两种场景：1）修�
 
 ### B2：读取索引，筛选相关 PM
 
-读取 [postmortem/INDEX.md](../../../postmortem/INDEX.md)，根据变更涉及的模块匹配相关 PM。
+读取 [postmortem/README.md](../../../postmortem/README.md)，根据变更涉及的模块匹配相关 PM。
 
 ### B3：逐条比对反模式
 
