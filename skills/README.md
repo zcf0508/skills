@@ -4,8 +4,9 @@
 
 ## 已收录
 
-- [`testing-frontend-code`](testing-frontend-code/SKILL.md)：前端业务代码的可测试性设计、测试层选择、回归测试与 E2E 治理。
+- [`testing-code`](testing-code/SKILL.md)：前端业务代码的可测试性设计、测试层选择、回归测试与 E2E 治理。
 - [`agent-friendly-design`](agent-friendly-design/SKILL.md)：面向 Agent 的契约设计，覆盖 API、tool schema、MCP server 与 SKILL.md 的语义化、结构化错误、可恢复与可发现约束。
+- [`postmortem`](postmortem/SKILL.md)：验尸报告的编写与回归检查，沉淀根因、反模式和预防措施。
 
 ## 目录约定
 
@@ -29,7 +30,7 @@ npx skills add <owner>/<repository> --skill <skill-name>
 安装本仓库当前技能：
 
 ```sh
-npx skills add <owner>/<repository> --skill testing-frontend-code
+npx skills add <owner>/<repository> --skill testing-code
 ```
 
 `<owner>/<repository>` 替换为本项目公开 Git 仓库地址。
