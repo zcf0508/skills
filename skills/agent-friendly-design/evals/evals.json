@@ -1,0 +1,90 @@
+{
+  "skill_name": "agent-friendly-design",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我新增一个 POST /orders 接口，接收商品列表和优先级，创建订单。",
+      "expected_output": "Agent 设计的契约中：priority 用语义化 enum 且在 schema 中显式约束；订单创建支持幂等键；错误响应用机器可读 code 加恢复信号，而不是只返回文案。",
+      "files": [],
+      "expectations": [
+        "priority 等枚举用语义化字符串，不用 1/2/3 或 P1/P2 内部编码",
+        "enum、必填等约束写进 OpenAPI / JSON Schema，不只写在文档 prose 里",
+        "写操作支持幂等键，重复请求不产生重复订单",
+        "错误响应包含 code、suggestion、retryable 等恢复信号"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "给 MCP server 加一个工具：用户说发推送就发推送。",
+      "expected_output": "Agent 把工具拆成原子动作并写清契约：description 覆盖做什么、何时用、何时不用；标注对外可见和不可逆；高风险发送要求显式确认参数，并区分公开 docs 工具与 OAuth 保护的产品工具。",
+      "files": [],
+      "expectations": [
+        "工具命名语义化，description 写明做什么、何时用、何时不用",
+        "对外发送标注副作用和不可逆性",
+        "高风险操作要求显式确认参数或 dry-run，不留无确认的直通路径",
+        "inputSchema 显式约束必填和枚举",
+        "没有把公开文档搜索塞进 OAuth 保护的 server"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "帮我写个 SKILL.md，教 Agent 怎么操作我们的内部部署平台。",
+      "expected_output": "Agent 产出的 SKILL.md 四段齐全（Goal / Instructions / Examples / Constraints），description 写清做什么和何时触发，主体控制在 500 行以内，细节拆到 references 一级链接，只写决策信息。",
+      "files": [],
+      "expectations": [
+        "frontmatter 包含 name 和 description，description 覆盖触发场景和边界",
+        "Goal / Instructions / Examples / Constraints 四段齐全",
+        "提供 2-3 个具体输入输出示例，而不是只有抽象规则",
+        "主体精简，超长细节拆到 references/ 并从主文件一级链接",
+        "只写 Agent 做决策所需信息，不解释常识"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "用户可能把状态值拼错，接口收到不认识的值时自动匹配到最接近的状态继续处理，别让流程断掉。",
+      "expected_output": "Agent 拒绝静默纠错：模糊匹配多候选或替换业务状态必须显式失败并返回 did_you_mean / suggestions，把决定权还给调用方；只兼容大小写、空白、历史别名这类无害变体。",
+      "files": [],
+      "expectations": [
+        "拒绝把不认识的值自动替换为最近状态",
+        "显式失败并返回 did_you_mean 或 suggestions",
+        "说明静默纠错对计费、权限、范围类参数的风险",
+        "无害变体（大小写、空白、别名）的有限兼容被保留"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "这个按钮的文案和配色帮我改一下，让页面更好看。",
+      "expected_output": "不应触发本 Skill，这是给人看的 UI 文案和视觉调整，与面向 Agent 的契约无关。",
+      "files": [],
+      "expectations": [
+        "不因出现接口、按钮等词就触发本 Skill",
+        "把请求识别为纯 UI 调整任务"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "评审这份 OpenAPI 契约的 Agent 友好性，只分析不要改。",
+      "expected_output": "Agent 保持只读，按核心原则和领域清单逐条核查，列出有依据的问题（字段位置、违反的原则、影响），不修改文件。",
+      "files": [],
+      "expectations": [
+        "不修改任何文件",
+        "逐条核查语义化、schema 约束、错误结构、幂等、可发现性",
+        "输出带具体位置（字段 / 端点）的问题列表，而非泛泛建议",
+        "指出的问题说明对 Agent 行为的具体影响"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "加一个 DELETE /projects/:id 接口，直接把项目和相关数据都删掉。",
+      "expected_output": "Agent 把不可逆操作设计进可控流程：删除是显式标注的高风险操作，要求显式确认参数或二次确认，提供软删除 / 回滚路径，并在响应中说明删除范围和不可恢复性；同时保持幂等语义。",
+      "files": [],
+      "expectations": [
+        "删除被标注为不可逆高风险操作",
+        "要求显式确认参数或 dry-run，不存在无确认直通路径",
+        "提供回滚路径（软删除或恢复期），并在文档说明",
+        "响应或错误信息说明删除范围",
+        "删除接口语义幂等"
+      ]
+    }
+  ]
+}

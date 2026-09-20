@@ -27,6 +27,7 @@ pnpx skills add zcf0508/skills --skill='*' -g
 | Skill | 说明 |
 | --- | --- |
 | [`testing-frontend-code`](skills/testing-frontend-code) | 用可测试性约束设计、实现、重构或评审前端业务代码；根据风险选择测试层，控制 E2E 成本。 |
+| [`agent-friendly-design`](skills/agent-friendly-design) | 面向 Agent 的契约设计：API、tool schema、MCP server、SKILL.md 的语义化、结构化错误、可恢复与可发现约束。 |
 
 ## 新增或维护 Skill
 

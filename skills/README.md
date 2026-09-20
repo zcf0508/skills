@@ -5,6 +5,7 @@
 ## 已收录
 
 - [`testing-frontend-code`](testing-frontend-code/SKILL.md)：前端业务代码的可测试性设计、测试层选择、回归测试与 E2E 治理。
+- [`agent-friendly-design`](agent-friendly-design/SKILL.md)：面向 Agent 的契约设计，覆盖 API、tool schema、MCP server 与 SKILL.md 的语义化、结构化错误、可恢复与可发现约束。
 
 ## 目录约定
 
